@@ -5,14 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的个人博客</title>
     <style>
+        /* Color Variables */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #343a40;
+            --link-color: #007bff;
+            --link-hover-color: #0056b3; /* Added hover color variable */
+            --header-bg: #ffffff;
+            --header-border: #e9ecef;
+            --hero-bg: #e9ecef;
+            --hero-text-muted: #6c757d;
+            --card-bg: #ffffff;
+            --card-border: #e9ecef;
+            --card-shadow: rgba(0,0,0,0.05);
+            --card-hover-shadow: rgba(0,0,0,0.1);
+            --card-text: #495057;
+            --footer-bg: #343a40;
+            --footer-text: #f8f9fa;
+            --footer-link: #00aeff;
+            --button-bg: #007bff;
+            --button-text: #ffffff;
+            --button-hover-bg: #0056b3;
+        }
+
+        body.dark-mode {
+            --bg-color: #1a1a1a; /* Darker background */
+            --text-color: #e0e0e0; /* Lighter text */
+            --link-color: #64b5f6; /* Lighter blue link */
+            --link-hover-color: #90caf9;
+            --header-bg: #2c2c2c; /* Dark header */
+            --header-border: #444;
+            --hero-bg: #2c2c2c; /* Dark hero */
+            --hero-text-muted: #adb5bd; /* Lighter muted text */
+            --card-bg: #333; /* Dark card */
+            --card-border: #555;
+            --card-shadow: rgba(255,255,255,0.05);
+            --card-hover-shadow: rgba(255,255,255,0.1);
+            --card-text: #ced4da; /* Lighter card text */
+            --footer-bg: #212529; /* Even darker footer */
+            --footer-text: #ced4da;
+            --footer-link: #90caf9;
+            --button-bg: #64b5f6;
+            --button-text: #1a1a1a;
+            --button-hover-bg: #90caf9;
+        }
+
         /* Reset and Basic Styles */
         body, html {
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             line-height: 1.6;
-            background-color: #f8f9fa; /* Light grey background */
-            color: #343a40; /* Dark grey text */
+            background-color: var(--bg-color); /* Use variable */
+            color: var(--text-color); /* Use variable */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
         }
 
         .container {
@@ -22,11 +68,12 @@
         }
 
         a {
-            color: #007bff; /* Primary blue for links */
+            color: var(--link-color); /* Use variable */
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+            color: var(--link-hover-color); /* Use variable */
         }
 
         img {
@@ -36,10 +83,11 @@
 
         /* Header & Navigation */
         .site-header {
-            background-color: #ffffff; /* White header */
+            background-color: var(--header-bg); /* Use variable */
             padding: 20px 0;
-            border-bottom: 1px solid #e9ecef; /* Light border */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--header-border); /* Use variable */
+            box-shadow: 0 2px 4px var(--card-shadow); /* Use variable */
+            transition: background-color 0.3s ease;
         }
 
         .site-header .container {
@@ -51,7 +99,7 @@
         .site-title {
             font-size: 1.8em;
             font-weight: bold;
-            color: #343a40;
+            color: var(--text-color); /* Use variable */
             margin: 0;
         }
         .site-title a {
@@ -73,32 +121,35 @@
         }
 
         .main-nav a {
-            color: #555;
+            color: var(--text-color); /* Use variable */
             font-weight: 500;
+            opacity: 0.8; /* Slightly dim nav links */
         }
         .main-nav a:hover {
-            color: #007bff;
+            color: var(--link-color); /* Use variable */
+            opacity: 1;
             text-decoration: none;
         }
 
         /* Hero Section */
         .hero {
-            background-color: #e9ecef; /* Slightly darker grey for hero */
+            background-color: var(--hero-bg); /* Use variable */
             padding: 60px 0;
             text-align: center;
             margin-bottom: 40px;
+            transition: background-color 0.3s ease;
         }
 
         .hero h1 {
             font-size: 2.8em;
-            color: #343a40;
+            color: var(--text-color); /* Use variable */
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .hero p {
             font-size: 1.2em;
-            color: #6c757d; /* Muted text color */
+            color: var(--hero-text-muted); /* Use variable */
             max-width: 600px;
             margin: 0 auto;
         }
@@ -112,22 +163,22 @@
             font-size: 2em;
             text-align: center;
             margin-bottom: 40px;
-            color: #343a40;
+            color: var(--text-color); /* Use variable */
             font-weight: 600;
         }
 
         .post-card {
-            background-color: #ffffff;
-            border: 1px solid #e9ecef;
+            background-color: var(--card-bg); /* Use variable */
+            border: 1px solid var(--card-border); /* Use variable */
             border-radius: 8px;
             margin-bottom: 30px;
             padding: 25px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 4px 8px var(--card-shadow); /* Use variable */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
         }
         .post-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px var(--card-hover-shadow); /* Use variable */
         }
 
         .post-card h2 {
@@ -136,53 +187,77 @@
             margin-bottom: 10px;
         }
         .post-card h2 a {
-            color: #343a40;
+            color: var(--text-color); /* Use variable */
         }
         .post-card h2 a:hover {
-            color: #007bff;
+            color: var(--link-color); /* Use variable */
             text-decoration: none;
         }
 
         .post-meta {
             font-size: 0.9em;
-            color: #6c757d;
+            color: var(--hero-text-muted); /* Use variable (muted text) */
             margin-bottom: 15px;
         }
 
         .post-excerpt p {
             margin-bottom: 15px;
-            color: #495057;
+            color: var(--card-text); /* Use variable */
         }
 
         .read-more-btn {
             display: inline-block;
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: var(--button-bg); /* Use variable */
+            color: var(--button-text); /* Use variable */
             padding: 8px 15px;
             border-radius: 5px;
             font-weight: 500;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
         .read-more-btn:hover {
-            background-color: #0056b3;
-            color: #ffffff;
+            background-color: var(--button-hover-bg); /* Use variable */
+            color: var(--button-text); /* Use variable */
             text-decoration: none;
         }
 
         /* Footer */
         .site-footer {
-            background-color: #343a40; /* Dark footer */
-            color: #f8f9fa; /* Light text on dark footer */
+            background-color: var(--footer-bg); /* Use variable */
+            color: var(--footer-text); /* Use variable */
             padding: 40px 0;
             text-align: center;
             font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .site-footer p {
             margin: 0;
         }
         .site-footer a {
-            color: #00aeff; /* Lighter blue for dark background */
+            color: var(--footer-link); /* Use variable */
         }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: 1px solid var(--header-border);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: 15px; /* Add some space */
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        #theme-toggle:hover {
+            background-color: var(--link-color);
+            color: var(--button-text);
+            border-color: var(--link-color);
+        }
+        body.dark-mode #theme-toggle:hover {
+             background-color: var(--link-hover-color);
+             border-color: var(--link-hover-color);
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -209,14 +284,17 @@
     <header class="site-header">
         <div class="container">
             <p class="site-title"><a href="#">我的博客</a></p>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">首页</a></li>
+            <div style="display: flex; align-items: center;"> <!-- Wrapper for nav and button -->
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#">首页</a></li>
                     <li><a href="#">关于</a></li>
                     <li><a href="#">归档</a></li>
-                    <li><a href="#">联系</a></li>
-                </ul>
-            </nav>
+                        <li><a href="#">联系</a></li>
+                    </ul>
+                </nav>
+                <button id="theme-toggle" title="切换亮色/暗色主题">☀️</button> <!-- Added Theme Toggle Button -->
+            </div>
         </div>
     </header>
 
@@ -279,7 +357,51 @@
     </footer>
 
     <script>
+        // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const lightIcon = '☀️';
+        const darkIcon = '🌙';
+
+        // Function to apply the selected theme
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = lightIcon; // Show icon to switch to light
+                themeToggle.title = '切换到亮色主题';
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.textContent = darkIcon; // Show icon to switch to dark
+                themeToggle.title = '切换到暗色主题';
+            }
+        }
+
+        // Function to toggle theme and save preference
+        function toggleTheme() {
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', newTheme); // Save preference
+            applyTheme(newTheme);
+        }
+
+        // Add event listener to the button
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Apply saved theme or system preference on page load
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else if (prefersDark) {
+            applyTheme('dark');
+        } else {
+            applyTheme('light'); // Default to light theme
+        }
+
     </script>
 
 </body>
