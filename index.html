@@ -3,23 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的测试网站</title>
+    <title>我的个人博客</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
-        .container { text-align: center; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        p { color: #666; }
+        /* Reset and Basic Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            background-color: #f8f9fa; /* Light grey background */
+            color: #343a40; /* Dark grey text */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: #007bff; /* Primary blue for links */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header & Navigation */
+        .site-header {
+            background-color: #ffffff; /* White header */
+            padding: 20px 0;
+            border-bottom: 1px solid #e9ecef; /* Light border */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #343a40;
+            margin: 0;
+        }
+        .site-title a {
+            color: inherit;
+        }
+        .site-title a:hover {
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav li {
+            margin-left: 20px;
+        }
+
+        .main-nav a {
+            color: #555;
+            font-weight: 500;
+        }
+        .main-nav a:hover {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #e9ecef; /* Slightly darker grey for hero */
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.8em;
+            color: #343a40;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #6c757d; /* Muted text color */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Posts Section */
+        .blog-posts {
+            padding-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #343a40;
+            font-weight: 600;
+        }
+
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .post-card h2 {
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .post-card h2 a {
+            color: #343a40;
+        }
+        .post-card h2 a:hover {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .post-meta {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .post-excerpt p {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        .read-more-btn:hover {
+            background-color: #0056b3;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #343a40; /* Dark footer */
+            color: #f8f9fa; /* Light text on dark footer */
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .site-footer p {
+            margin: 0;
+        }
+        .site-footer a {
+            color: #00aeff; /* Lighter blue for dark background */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-header .container {
+                flex-direction: column;
+            }
+            .site-title {
+                margin-bottom: 15px;
+            }
+            .main-nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>欢迎来到我的测试网站！</h1>
-        <p>这个页面已成功通过 Cloudflare Pages 部署。</p>
-        <p>域名：<span id="domain-placeholder">[你的域名将显示在这里]</span></p>
-    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <p class="site-title"><a href="#">我的博客</a></p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">关于</a></li>
+                    <li><a href="#">归档</a></li>
+                    <li><a href="#">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>探索我的想法与故事</h1>
+            <p>欢迎来到我的数字空间，在这里我分享技术见解、生活点滴和学习心得。</p>
+        </div>
+    </section>
+
+    <main class="blog-posts container">
+        <h2 class="section-title">最新文章</h2>
+
+        <article class="post-card">
+            <header>
+                <h2><a href="#">我的第一篇博客文章</a></h2>
+                <p class="post-meta">发布于 <time datetime="2025-05-12">2025年5月12日</time> by 我</p>
+            </header>
+            <div class="post-excerpt">
+                <p>这是我博客的第一篇文章！我非常激动能开始这个旅程，并与大家分享我的想法。在这篇文章中，我会简单介绍一下这个博客的主题和我未来的计划...</p>
+            </div>
+            <footer>
+                <a href="#" class="read-more-btn">阅读全文 &rarr;</a>
+            </footer>
+        </article>
+
+        <article class="post-card">
+            <header>
+                <h2><a href="#">关于网页设计的思考</a></h2>
+                <p class="post-meta">发布于 <time datetime="2025-05-10">2025年5月10日</time> by 我</p>
+            </header>
+            <div class="post-excerpt">
+                <p>网页设计不仅仅是美观，更重要的是用户体验和功能性。一个好的设计能够引导用户，清晰地传递信息。我最近在研究一些现代设计趋势...</p>
+            </div>
+            <footer>
+                <a href="#" class="read-more-btn">阅读全文 &rarr;</a>
+            </footer>
+        </article>
+
+        <article class="post-card">
+            <header>
+                <h2><a href="#">学习新技术的经验分享</a></h2>
+                <p class="post-meta">发布于 <time datetime="2025-05-08">2025年5月8日</time> by 我</p>
+            </header>
+            <div class="post-excerpt">
+                <p>学习新技术总是充满挑战和乐趣。对我来说，关键在于找到好的学习资源，动手实践，并与他人交流。最近我学习了 XYZ 技术，有一些心得想和大家分享...</p>
+            </div>
+            <footer>
+                <a href="#" class="read-more-btn">阅读全文 &rarr;</a>
+            </footer>
+        </article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> 我的个人博客. 保留所有权利。</p>
+            <p>由 <a href="https://pages.cloudflare.com/" target="_blank" rel="noopener">Cloudflare Pages</a> 强力驱动</p>
+        </div>
+    </footer>
+
     <script>
-        // 尝试获取当前域名并显示
-        document.getElementById('domain-placeholder').textContent = window.location.hostname;
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
+
 </body>
 </html>
